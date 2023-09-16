@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 100; // Maximum stack size
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* top = nullptr;
+Node stackArray[MAX_SIZE];
+int stackSize = 0;
+
+void push(int value) {
+    stackArray[stackSize].data = value;
+    stackArray[stackSize].next = top;
+    top = &stackArray[stackSize];
+    stackSize++;
+}
+
+void pop() {
+    if (top == nullptr) {
+        cout << "Stack is empty. Cannot perform pop operation." << endl;
+        return;
+    }
+
+    top = top->next;
+    stackSize--;
+}
+
+// Function to display the elements in the stack
+void displayStack() {
+    if (top == nullptr) {
+        cout << "Stack is empty." << endl;
+        return;
+    }
+
+    Node* current = top;
+    cout << "Elements in the stack: ";
+    while (current != nullptr) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    int choice, value;
+
+    do {
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cin >> value;
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                displayStack();
+                break;
+            case 4:
+                cout << "Exiting the program." << endl;
+                break;
+            default:
+                cout << "Invalid choice." << endl;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
