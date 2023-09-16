@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 30;
+
+class Stack {
+private:
+    int top;
+    int stackArray[MAX_SIZE];
+
+public:
+    Stack() {
+        top = -1;
+    }
+
+    bool isEmpty() {
+        return top == -1;
+    }
+
+    bool isFull() {
+        return top == MAX_SIZE - 1;
+    }
+
+    void push(int value) {
+        if (isFull()) {
+            cout << "STACK is overflow" << endl;
+            return;
+        }
+        stackArray[++top] = value;
+    }
+
+    bool search(int value) {
+        if (isEmpty()) {
+            cout << "The STACK is empty" << endl;
+            return false;
+        }
+
+        for (int i = 0; i <= top; i++) {
+            if (stackArray[i] == value) {
+                cout << "Element found" << endl;
+                return true;
+            }
+        }
+
+        cout << "Element not found" << endl;
+        return false;
+    }
+};
+
+int main() {
+    int n, s;
+    cin >> n;
+
+    Stack stack;
+
+    for (int i = 0; i < n; i++) {
+        int element;
+        cin >> element;
+        stack.push(element);
+    }
+
+    cin >> s;
+    stack.search(s);
+
+    return 0;
+}
