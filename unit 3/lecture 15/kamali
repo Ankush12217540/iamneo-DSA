@@ -12,7 +12,7 @@ struct Stack {
  
 void init(Stack* s) {
     s->top = -1;
-}
+} 
 
 void push(Stack* s, int value) {
     if (s->top >= MAX_SIZE - 1) {
