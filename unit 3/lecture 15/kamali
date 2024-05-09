@@ -9,7 +9,7 @@ struct Stack {
     int stackArray[MAX_SIZE];
     int top;
 };
-
+ 
 void init(Stack* s) {
     s->top = -1;
 }
